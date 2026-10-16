@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iNotes - Quản lý ghi chú</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container my-5">
+        <h1 class="text-center mb-4">
+            <i class="fas fa-sticky-note text-warning"></i> iNotes
+        </h1>
+
+        <!-- Chuyển đổi tầng lưu trữ -->
+        <div class="text-center mb-4">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary active" id="btnDB">
+                    <i class="fas fa-database"></i> Database
+                </button>
+                <button type="button" class="btn btn-outline-primary" id="btnFile">
+                    <i class="fas fa-file-alt"></i> File
+                </button>
+            </div>
+            <p class="text-muted mt-2 small">
+                Tầng lưu trữ hiện tại: <strong id="currentStrategy">Database</strong>
+            </p>
+        </div>
+
+        <!-- Form thêm mới -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-plus-circle"></i> Thêm mới ghi chú</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Tiêu đề <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" placeholder="Nhập tiêu đề ghi chú">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phân loại</label>
+                        <select class="form-select">
+                            <option>Cá nhân</option>
+                            <option>Công việc</option>
+                            <option>Học tập</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nội dung</label>
+                        <textarea class="form-control" rows="4" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Lưu ghi chú
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Hủy bỏ
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Danh sách ghi chú -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="fas fa-list"></i> Danh sách ghi chú</h5>
+                <input type="text" class="form-control form-control-sm" style="width: 250px;"
+                       placeholder="🔍 Tìm kiếm...">
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Tiêu đề</th>
+                            <th>Phân loại</th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Họp giao ban đầu tuần</td>
+                            <td><span class="badge bg-info">Công việc</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i> Xem</button>
+                                <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Sửa</button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Xóa</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Ôn tập Design Pattern</td>
+                            <td><span class="badge bg-success">Học tập</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i> Xem</button>
+                                <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Sửa</button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Xóa</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mua quà sinh nhật mẹ</td>
+                            <td><span class="badge bg-warning text-dark">Cá nhân</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i> Xem</button>
+                                <button class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Sửa</button>
+                                <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Xóa</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo chuyển đổi Strategy
+        document.getElementById('btnDB').addEventListener('click', function() {
+            document.getElementById('currentStrategy').textContent = 'Database';
+            document.querySelectorAll('.btn-group button').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+        });
+
+        document.getElementById('btnFile').addEventListener('click', function() {
+            document.getElementById('currentStrategy').textContent = 'File';
+            document.querySelectorAll('.btn-group button').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+        });
+    </script>
+
+</body>
+</html>

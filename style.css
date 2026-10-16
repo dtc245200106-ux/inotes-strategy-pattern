@@ -1,0 +1,52 @@
+/* ============================================
+   GLOBAL
+   ============================================ */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    min-height: 100vh;
+}
+
+h1 {
+    color: #1a2a4a;
+    font-weight: bold;
+}
+
+/* Card */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-header {
+    border-bottom: none;
+}
+
+/* Table */
+.table th {
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Badge */
+.badge {
+    font-size: 12px;
+    padding: 5px 10px;
+}
